@@ -9,12 +9,12 @@
 #include "../components/cmp_text.h"
 #include "../add_entity.h"
 
-// SET09121 2017-8 TR2 001 - Games Engineering
-// Picobots
-// Version 0.7.0
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype
+// Version 0.1.2
 // Alexander Barker 
 // 40333139
-// Last Updated on 1st May 2018
+// Last Updated on 16th November 2018
 // scene_tutorial.cpp - This file is used to call for loads, updates and renders for Tutorial.
 
 using namespace std;

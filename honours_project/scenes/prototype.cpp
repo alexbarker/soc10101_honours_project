@@ -6,14 +6,16 @@
 #include <iostream>
 #include <thread>
 #include "../components/cmp_music.h"
+#include "../components/cmp_text.h"
+#include "../add_entity.h"
 
-// SET09121 2017-8 TR2 001 - Games Engineering
-// Picobots
-// Version 0.7.0
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype
+// Version 0.1.2
 // Alexander Barker 
 // 40333139
-// Last Updated on 14th April 2018
-// scene_high_scores.cpp - This file only displays a blank screen.
+// Last Updated on 16th November 2018
+// prototype.cpp - This file displays split-screen games of snake with metrics.
 
 using namespace std;
 using namespace sf;
@@ -25,7 +27,27 @@ void PrototypeScene::Load() {
 	//s3.stop();
 	//s1.playing();
 
+	float x2 = Engine::getWindowSize().x;
+	float y2 = Engine::getWindowSize().y;
+	Engine::GetWindow().setSize(sf::Vector2u(x2, y2));
+	Engine::GetWindow().display();
 
+	float temp = y2 / 44;
+
+	ls::loadLevelFile("res/prototypelevel.txt", temp);
+	auto ho = Engine::getWindowSize().y - (ls::getHeight() * temp);
+	ls::setOffset(Vector2f(100, ho));
+
+	{
+		auto txtSnakeTitle = makeEntity();
+		auto t = txtSnakeTitle->addComponent<TextComponent>("Snake Prototype");
+		t->getText().setCharacterSize(38);
+		t->getText().setOrigin(t->getText().getGlobalBounds().width / 2 + 20, t->getText().getGlobalBounds().height / 1.2);
+		txtSnakeTitle->setPosition(Vector2f(Engine::GetWindow().getSize().x / 2, 50.f));
+
+	}
+
+	AddEntity::makeWalls(this);
 }
 
 void PrototypeScene::UnLoad() {
@@ -57,5 +79,6 @@ void PrototypeScene::Update(const double& dt) {
 }
 
 void PrototypeScene::Render() {
+	ls::render(Engine::GetWindow());
 	Scene::Render();
 }
