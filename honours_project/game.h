@@ -14,7 +14,7 @@
 #include "scenes/scene_settings.h"
 #include "scenes/scene_game_over.h"
 #include "scenes/scene_end_game.h"
-#include "scenes/scene_high_scores.h"
+#include "scenes/prototype.h"
 #include "scenes/scene_tutorial.h"
 #include "scenes/scene_load.h"
 
@@ -31,7 +31,7 @@ extern BossLevelScene bosslevel;
 extern SettingsScene  settings;
 extern GameOverScene  gameover;
 extern EndGameScene  endgame;
-extern HighScoresScene  highscores;
+extern PrototypeScene  prototype;
 extern TutorialScene  tutorial;
 extern LoadScene  load;
 

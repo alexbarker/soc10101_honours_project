@@ -1,7 +1,7 @@
 #pragma once
 #include "engine.h"
 
-class HighScoresScene : public Scene {
+class PrototypeScene : public Scene {
 public:
 	void Load() override;
 

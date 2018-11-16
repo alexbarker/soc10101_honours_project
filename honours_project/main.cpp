@@ -26,11 +26,11 @@ BossLevelScene bosslevel;
 SettingsScene settings;
 GameOverScene gameover;
 EndGameScene endgame;
-HighScoresScene highscores;
+PrototypeScene prototype;
 TutorialScene tutorial;
 LoadScene load;
 
 int main() {
 
-	Engine::Start(1504, 846, "Picobots", &splash);
+	Engine::Start(1504, 846, "Honours Project", &splash);
 }

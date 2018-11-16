@@ -23,9 +23,9 @@ using namespace sf;
 static shared_ptr<Entity> player;
 
 void LoadScene::Load() {
-	s2.stop();
-	s3.stop();
-	s1.playing();
+	//s2.stop();
+	//s3.stop();
+	//s1.playing();
 }
 
 void LoadScene::UnLoad() {

@@ -71,7 +71,7 @@ void BossLevelScene::SetBackground() {
 }
 
 void BossLevelScene::Load() {
-	s3.playing();
+	//s3.playing();
 
 	float x2 = Engine::getWindowSize().x;
 	float y2 = Engine::getWindowSize().y;
@@ -125,7 +125,7 @@ void BossLevelScene::Update(const double& dt) {
 		Engine::ChangeScene((Scene*)&level1);
 	}
 	else if (ls::getTileAt(pp) == ls::ENDGAME) {
-		s1.play1(0, true);
+		//s1.play1(0, true);
 		Engine::ChangeScene((Scene*)&menu);
 	}
 	else if (!player->isAlive()) {
@@ -148,7 +148,7 @@ void BossLevelScene::Update(const double& dt) {
 		Load();
 	}
 	if (sf::Keyboard::isKeyPressed(Keyboard::Escape)) {
-		s1.play1(0, true);
+		//s1.play1(0, true);
 		Engine::ChangeScene(&menu);
 	}
 	Scene::Update(dt);

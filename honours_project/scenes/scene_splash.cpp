@@ -22,9 +22,9 @@
 
 using namespace std;
 using namespace sf;
-MusicPlayer s1;
-MusicPlayer s2;
-MusicPlayer s3;
+//MusicPlayer s1;
+//MusicPlayer s2;
+//MusicPlayer s3;
 
 sf::Sprite splashSprite1;
 sf::Texture splashTexture1;
@@ -40,7 +40,7 @@ sf::Time now1;
 sf::Time now2;
 
 void SplashScene::SetBackground() {
-	s1.playing();
+	//s1.playing();
 	splashTexture1 = *Resources::load<Texture>("SplashScreen1.png");
 	float x = Engine::GetWindow().getSize().x;
 	float y = Engine::GetWindow().getSize().y;
@@ -54,14 +54,14 @@ void SplashScene::SetBackground() {
 	splashSprite1.setScale(ScaleX, ScaleY);
 	splashSprite1.setOrigin(0, 0);
 	setLoaded(true);
-	s1.playing();
+	//s1.playing();
 
 	sf::Clock clock; // starts the clock
 	while (now1 < sf::milliseconds(4000)) {
 		now1 = clock.getElapsedTime();
 	}
 	clock.restart();
-
+	/*
 	s1.playing();
 	splashTexture2 = *Resources::load<Texture>("SplashScreen2.png");
 	float x2 = Engine::GetWindow().getSize().x;
@@ -83,13 +83,14 @@ void SplashScene::SetBackground() {
 	}
 	clock.restart();
 	//std::this_thread::sleep_for(std::chrono::milliseconds(4000));
+	*/
 }
 
 void SplashScene::Load() {
-	s1.play1(0, true);
+	//s1.play1(0, true);
 	SetBackground();
 	setLoaded(true);
-	s1.playing();
+	//s1.playing();
 	Engine::ChangeScene(&menu);
 }
 

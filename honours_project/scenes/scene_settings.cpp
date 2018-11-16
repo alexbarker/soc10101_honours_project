@@ -31,9 +31,9 @@ static shared_ptr<Entity> player;
 
 void SettingsScene::Load() {
 
-	s2.stop();
-	s3.stop();
-	s1.playing();
+	//s2.stop();
+	//s3.stop();
+	//s1.playing();
 
 	effect1a.loadFromFile("res/sound/shoot.ogg");
 	sound1a.setBuffer(effect1a);
@@ -44,7 +44,7 @@ void SettingsScene::Load() {
 		auto txtSettings = makeEntity();
 		auto t = txtSettings->addComponent<TextComponent>("Settings");
 		t->getText().setCharacterSize(54);
-		t->getText().setOrigin(t->getText().getGlobalBounds().width / 2, t->getText().getGlobalBounds().height / 2);
+		t->getText().setOrigin(t->getText().getGlobalBounds().width / 2 + 20, t->getText().getGlobalBounds().height / 2);
 		txtSettings->setPosition(Vector2f(Engine::GetWindow().getSize().x / 2, 100.f));
 	}
 
@@ -55,27 +55,27 @@ void SettingsScene::Load() {
 	settingsMenu[0].setFont(font);
 	settingsMenu[0].setFillColor(sf::Color::Green);
 	settingsMenu[0].setString("Default");
-	settingsMenu[0].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 40));
+	settingsMenu[0].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 40));
 
 	settingsMenu[1].setFont(font);
 	settingsMenu[1].setFillColor(sf::Color::White);
 	settingsMenu[1].setString("1504 x 846");
-	settingsMenu[1].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 80));
+	settingsMenu[1].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 80));
 
 	settingsMenu[2].setFont(font);
 	settingsMenu[2].setFillColor(sf::Color::White);
 	settingsMenu[2].setString("1920 x 1080");
-	settingsMenu[2].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 120));
+	settingsMenu[2].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 120));
 
 	settingsMenu[3].setFont(font);
 	settingsMenu[3].setFillColor(sf::Color::White);
 	settingsMenu[3].setString("Fullscreen");
-	settingsMenu[3].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 160));
+	settingsMenu[3].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 160));
 
 	settingsMenu[4].setFont(font);
 	settingsMenu[4].setFillColor(sf::Color::White);
 	settingsMenu[4].setString("Back to Title");
-	settingsMenu[4].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 200));
+	settingsMenu[4].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 200));
 
 	selectedItemIndex2 = 0;
 

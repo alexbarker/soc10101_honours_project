@@ -20,20 +20,22 @@ using namespace sf;
 
 static shared_ptr<Entity> player;
 
-void HighScoresScene::Load() {
-	s2.stop();
-	s3.stop();
-	s1.playing();
+void PrototypeScene::Load() {
+	//s2.stop();
+	//s3.stop();
+	//s1.playing();
+
+
 }
 
-void HighScoresScene::UnLoad() {
+void PrototypeScene::UnLoad() {
 	float x2 = Engine::GetWindow().getSize().x;
 	float y2 = Engine::GetWindow().getSize().y;
 	Engine::GetWindow().setView(sf::View(sf::FloatRect(0, 0, x2, y2)));
 	Scene::UnLoad();
 }
 
-void HighScoresScene::Update(const double& dt) {
+void PrototypeScene::Update(const double& dt) {
 	Scene::Update(dt);
 	Event event;
 	while (Engine::GetWindow().pollEvent(event)) {
@@ -54,6 +56,6 @@ void HighScoresScene::Update(const double& dt) {
 	}
 }
 
-void HighScoresScene::Render() {
+void PrototypeScene::Render() {
 	Scene::Render();
 }

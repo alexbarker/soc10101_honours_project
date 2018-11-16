@@ -60,54 +60,54 @@ void MenuScene::SetTitle() {
 
 void MenuScene::Load() {
 	{
-		s2.stop();
-		s3.stop();
-		s1.playing();
+		//s2.stop();
+		//s3.stop();
+		//s1.playing();
 		float x2 = Engine::getWindowSize().x;
 		float y2 = Engine::getWindowSize().y;
 		SetTitle();
-
+		
 		effect1.loadFromFile("res/sound/shoot.ogg");
 		sound1.setBuffer(effect1);
 		effect2.loadFromFile("res/sound/menu.ogg");
 		sound2.setBuffer(effect2);
-
+		/*
 		roboarm.setPosition(x2 - 400.0f, 200.0f);
 		roboarmTexture.loadFromFile("res/img/RoboarmSprite.png");
 		roboarm2.setPosition(0, 200.0f);
 		roboarmTexture2.loadFromFile("res/img/RoboarmSprite.png");
-
+		*/
 		font.loadFromFile("res/fonts/RobotoMono-Regular.ttf");
 
 		menu[0].setFont(font);
 		menu[0].setFillColor(sf::Color::Green);
-		menu[0].setString("New Game");
-		menu[0].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 40));
+		menu[0].setString("Snake Prototype");
+		menu[0].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 40));
 
 		menu[1].setFont(font);
 		menu[1].setFillColor(sf::Color::White);
-		menu[1].setString("Load Game");
-		menu[1].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 80));
+		menu[1].setString("<Empty>");
+		menu[1].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 80));
 
 		menu[2].setFont(font);
 		menu[2].setFillColor(sf::Color::White);
-		menu[2].setString("High Scores");
-		menu[2].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 120));
+		menu[2].setString("<Empty>");
+		menu[2].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 120));
 
 		menu[3].setFont(font);
 		menu[3].setFillColor(sf::Color::White);
-		menu[3].setString("Tutorial");
-		menu[3].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 160));
+		menu[3].setString("Help");
+		menu[3].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 160));
 
 		menu[4].setFont(font);
 		menu[4].setFillColor(sf::Color::White);
 		menu[4].setString("Settings");
-		menu[4].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 200));
+		menu[4].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 200));
 
 		menu[5].setFont(font);
 		menu[5].setFillColor(sf::Color::White);
 		menu[5].setString("Quit");
-		menu[5].setPosition(sf::Vector2f((x2 / 2) - 80, (y2 / 2) + 240));
+		menu[5].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 240));
 
 		selectedItemIndex = 0;
 
@@ -148,15 +148,15 @@ void MenuScene::Update(const double& dt) {
 		{
 		case 0:
 			sound2.play();
-			Engine::ChangeScene(&level1);
+			Engine::ChangeScene(&prototype);
 			break;
 		case 1:
 			sound2.play();
-			Engine::ChangeScene(&load);
+			Engine::ChangeScene(&level1);
 			break;
 		case 2:
 			sound2.play();
-			Engine::ChangeScene(&highscores);
+			Engine::ChangeScene(&load);
 			break;
 		case 3:
 			sound2.play();
@@ -177,7 +177,7 @@ void MenuScene::Update(const double& dt) {
 
 void MenuScene::Render() {
 	Scene::Render();
-
+	/*
 	if (clock1.getElapsedTime().asSeconds() > 0.2f) {
 		if (roboSource.left == 6000) {
 			roboSource.left = 0;
@@ -194,22 +194,22 @@ void MenuScene::Render() {
 			clock1.restart();
 		}
 	}
-
+	*/
 	if (fadeCounter <= 250) {
-		roboarm.setColor(sf::Color(255, 255, 255, fadeCounter));
-		roboarm2.setColor(sf::Color(255, 255, 255, fadeCounter));
+		//roboarm.setColor(sf::Color(255, 255, 255, fadeCounter));
+		//roboarm2.setColor(sf::Color(255, 255, 255, fadeCounter));
 		titleSprite.setColor(sf::Color(255, 255, 255, fadeCounter));
 		fadeCounter++;
-		Renderer::queue(&roboarm);
-		Renderer::queue(&roboarm2);
+		//Renderer::queue(&roboarm);
+		//Renderer::queue(&roboarm2);
 		Renderer::queue(&titleSprite);
 	}
 	else {
-		roboarm.setColor(sf::Color(255, 255, 255, 255));
-		roboarm2.setColor(sf::Color(255, 255, 255, 255));
+		//roboarm.setColor(sf::Color(255, 255, 255, 255));
+		//roboarm2.setColor(sf::Color(255, 255, 255, 255));
 		titleSprite.setColor(sf::Color(255, 255, 255, 255));
-		Renderer::queue(&roboarm);
-		Renderer::queue(&roboarm2);
+		//Renderer::queue(&roboarm);
+		//Renderer::queue(&roboarm2);
 		Renderer::queue(&titleSprite);
 		for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
 		{

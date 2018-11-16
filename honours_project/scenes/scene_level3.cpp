@@ -71,7 +71,7 @@ void Level3Scene::SetBackground() {
 }
 
 void Level3Scene::Load() {
-	s2.playing();
+	//s2.playing();
 
 	float x2 = Engine::getWindowSize().x;
 	float y2 = Engine::getWindowSize().y;
@@ -158,7 +158,7 @@ void Level3Scene::Update(const double& dt) {
 		Load();
 	}
 	if (sf::Keyboard::isKeyPressed(Keyboard::Escape)) {
-		s1.play1(0, true);
+		//s1.play1(0, true);
 		Engine::ChangeScene(&menu);
 	}
 	Scene::Update(dt);

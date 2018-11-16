@@ -23,9 +23,9 @@ using namespace sf;
 static shared_ptr<Entity> player;
 
 void TutorialScene::Load() {
-	s2.stop();
-	s3.stop();
-	s1.playing();
+	//s2.stop();
+	//s3.stop();
+	//s1.playing();
 
 	float x2 = Engine::getWindowSize().x;
 	float y2 = Engine::getWindowSize().y;
@@ -42,7 +42,7 @@ void TutorialScene::Load() {
 		auto txtTutorialTitle = makeEntity();
 		auto t = txtTutorialTitle->addComponent<TextComponent>("Tutorial");
 		t->getText().setCharacterSize(53);
-		t->getText().setOrigin(t->getText().getGlobalBounds().width / 2, t->getText().getGlobalBounds().height / 2);
+		t->getText().setOrigin(t->getText().getGlobalBounds().width / 2 + 20, t->getText().getGlobalBounds().height / 2);
 		txtTutorialTitle->setPosition(Vector2f(Engine::GetWindow().getSize().x / 2, 100.f));
 
 		auto txtTutorialBack = makeEntity();

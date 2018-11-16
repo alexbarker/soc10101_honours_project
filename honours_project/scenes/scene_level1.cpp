@@ -74,9 +74,9 @@ void Level1Scene::SetBackground() {
 }
 
 void Level1Scene::Load() {
-	s1.stop();
-	s3.stop();
-	s2.play2(1, true);
+	//s1.stop();
+	//s3.stop();
+	//s2.play2(1, true);
 
 	//for(auto ent : ents.list) {ent->setForDelete();}
 	//ents.list.clear();
@@ -166,7 +166,7 @@ void Level1Scene::Update(const double& dt) {
 		Load();
 	}
 	if (sf::Keyboard::isKeyPressed(Keyboard::Escape)) {
-		s1.play1(0, true);
+		//s1.play1(0, true);
 		Engine::ChangeScene(&menu);
 	}
 
