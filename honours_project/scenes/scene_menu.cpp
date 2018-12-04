@@ -54,7 +54,7 @@ void MenuScene::SetTitle() {
 	float ScaleY = (float)windowSizeMenu.y / titleTextureSize.y;     //Calculate scale.
 	target = { x , y };
 	titleSprite.setTexture(titleTexture);
-	titleSprite.setPosition(windowSizeMenu.x / 2, windowSizeMenu.y / 3);
+	titleSprite.setPosition(windowSizeMenu.x / 2, windowSizeMenu.y / 3.6f);
 	titleSprite.setOrigin(titleTextureSize.x / 2, titleTextureSize.y / 2);
 }
 
@@ -152,7 +152,7 @@ void MenuScene::Update(const double& dt) {
 			break;
 		case 1:
 			sound2.play();
-			Engine::ChangeScene(&level1);
+			Engine::ChangeScene(&load);
 			break;
 		case 2:
 			sound2.play();

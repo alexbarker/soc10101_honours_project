@@ -8,6 +8,9 @@
 #include "../components/cmp_music.h"
 #include "../components/cmp_text.h"
 #include "../add_entity.h"
+#include <system_resources.h>
+#include "system_renderer.h"
+#include "prototype.h"
 
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype
@@ -21,6 +24,25 @@ using namespace std;
 using namespace sf;
 
 static shared_ptr<Entity> player;
+sf::Sprite titleSprite111b;
+sf::Texture titleTexture111b;
+sf::Vector2u titleSize111b;
+sf::Vector2u windowSize111b;
+int fadeCounter111 = 0;
+
+void PrototypeScene::SetTitle1() {
+	titleTexture111b = *Resources::load<Texture>("littletitle.png");
+	float x1 = Engine::GetWindow().getSize().x;
+	float y1 = Engine::GetWindow().getSize().y;
+	titleSize111b = titleTexture111b.getSize(); //Get size of texture.
+	windowSize111b = Engine::GetWindow().getSize();             //Get size of window.
+	float ScaleX = (float)windowSize111b.x / titleSize111b.x;
+	float ScaleY = (float)windowSize111b.y / titleSize111b.y;     //Calculate scale.
+	titleSprite111b.setTexture(titleTexture111b);
+	titleSprite111b.setPosition(windowSize111b.x / 9.2, windowSize111b.y / 12.5);
+	titleSprite111b.setScale(ScaleX / 8, ScaleY / 8);
+	titleSprite111b.setOrigin(titleSize111b.x / 2, titleSize111b.y / 2);
+}
 
 void PrototypeScene::Load() {
 	//s2.stop();
@@ -36,7 +58,9 @@ void PrototypeScene::Load() {
 
 	ls::loadLevelFile("res/prototypelevel.txt", temp);
 	auto ho = Engine::getWindowSize().y - (ls::getHeight() * temp);
-	ls::setOffset(Vector2f(100, ho));
+	ls::setOffset(Vector2f(30, ho));
+
+	SetTitle1();
 
 	{
 		auto txtSnakeTitle = makeEntity();
@@ -81,4 +105,14 @@ void PrototypeScene::Update(const double& dt) {
 void PrototypeScene::Render() {
 	ls::render(Engine::GetWindow());
 	Scene::Render();
+
+	if (fadeCounter111 <= 250) {
+		titleSprite111b.setColor(sf::Color(255, 255, 255, fadeCounter111));
+		fadeCounter111--;
+		Renderer::queue(&titleSprite111b);
+	}
+	else {
+		fadeCounter111 = 0;
+		Renderer::queue(&titleSprite111b);
+	}
 }
