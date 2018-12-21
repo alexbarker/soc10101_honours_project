@@ -36,13 +36,18 @@ std::shared_ptr<Entity> AddEntity::makePlayer(Scene* scene, const Vector2f& pos)
 	player->setPosition(ls::getTilePosition(ls::findTiles(ls::START)[0]));
 	player->addTag("player");
 
+	auto s = player->addComponent<ShapeComponent>();
+	s->setShape<CircleShape>(10.f, 10.f);
+	s->getShape().setFillColor(Color::White);
+	s->getShape().setOrigin(Vector2f(5.f, 5.f));
+	/*
 	auto animation = player->addComponent<AnimationComponent>(Vector2f(46.f, 46.f));
 	sf::Texture s = *Resources::load<Texture>("PlayerSpritesheet.png");
 	animation->setSpritesheet(s);
 	animation->setFrameCount(15);
 	animation->setFrameTime(0.06f);
-
-	player->addComponent<PlayerPhysicsComponent>(Vector2f(22.f, 17.f));
+	*/
+	player->addComponent<PlayerPhysicsComponent>(Vector2f(10.f, 10.f));
 
 	return player;
 }
