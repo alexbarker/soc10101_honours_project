@@ -32,6 +32,8 @@ add_subdirectory("lib/b2d/Box2D")
 set(B2D_INCS "lib/b2d/Box2D/")
 link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
 
+# FANN - Fast Artificial Neural Network Library
+
 #### Engine ####
 file(GLOB_RECURSE RESOURCE_FILES "res/*.*")
 ####
@@ -58,9 +60,11 @@ target_link_libraries(lib_ecm PRIVATE lib_maths)
 file(GLOB_RECURSE SOURCES honours_project/*.cpp honours_project/*.h)
 file(GLOB_RECURSE CMPNTS honours_project/components/*.cpp honours_project/components/*.h)
 file(GLOB_RECURSE SCENES honours_project/scenes/*.cpp honours_project/scenes/*.h)
-add_executable(SNAKE ${SOURCES} ${CMPNTS} ${SCENES} ${RESOURCE_FILES})
+file(GLOB_RECURSE AI honours_project/ai/*.cpp honours_project/ai/*.h)
+add_executable(SNAKE ${SOURCES} ${CMPNTS} ${SCENES} ${AI} ${RESOURCE_FILES})
 source_group("components" FILES ${CMPNTS})
 source_group("scenes" FILES ${SCENES})
+source_group("ai" FILES ${AI})
 source_group("resources" FILES ${RESOURCE_FILES})
 target_link_libraries(SNAKE lib_engine)
 set(EXECUTABLES ${EXECUTABLES} SNAKE)
@@ -129,7 +133,7 @@ foreach (exe ${EXECUTABLES})
   #set(CPACK_INSTALL_CMAKE_PROJECTS ${CPACK_INSTALL_CMAKE_PROJECTS};${CMAKE_BINARY_DIR};${CMAKE_PROJECT_NAME};${exe}_cmpt;/)
   set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} ${exe}_cmpt)
   set(CPACK_COMPONENT_${exe}_CMPT_DEPENDS resources_cmpt libs_cmpt)
-  set(CPACK_COMPONENT_${exe}_CMPT_GROUP "HonoursSnake")
+  set(CPACK_COMPONENT_${exe}_CMPT_GROUP "Honours")
 endforeach ()
 
 
@@ -145,7 +149,7 @@ ENDIF(WIN32)
 
 
 set(CPACK_PACKAGE_FILE_NAME ${CMAKE_PROJECT_NAME})
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "HonoursSnake")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Honours")
 set(CPACK_PACKAGE_VENDOR "40333139")
 find_file (LICENSE NAMES LICENSE LICENSE.txt PATHS  "${CMAKE_SOURCE_DIR}/../" "${CMAKE_SOURCE_DIR}" NO_DEFAULT_PATH)
 if(${LICENSE})

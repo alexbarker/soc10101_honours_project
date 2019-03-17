@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ecm.h>
-#include "../steering.h"
+#include "../ai/steering.h"
 
 class SteeringComponent : public Component
 {

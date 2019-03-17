@@ -1,5 +1,5 @@
 #include "steering_states.h"
-#include "components/cmp_sprite.h"
+#include "../components/cmp_sprite.h"
 
 using namespace sf;
 

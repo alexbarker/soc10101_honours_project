@@ -1,7 +1,7 @@
 #pragma once
 
 #include "steering.h"
-#include "components/cmp_state_machine.h"
+#include "../components/cmp_state_machine.h"
 #include "ecm.h"
 
 class StationaryState : public State

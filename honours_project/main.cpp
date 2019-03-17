@@ -1,5 +1,5 @@
 #include "engine.h"
-#include "game.h"
+#include "app.h"
 #include "scenes/scene_splash.h"
 #include <SFML/Audio.hpp>
 

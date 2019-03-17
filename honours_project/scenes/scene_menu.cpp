@@ -1,6 +1,6 @@
 #include "scene_splash.h"
 #include "../components/cmp_text.h"
-#include "../game.h"
+#include "../app.h"
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Audio.hpp>
 #include "../components/cmp_music.h"
@@ -12,6 +12,10 @@
 #include "LevelSystem.h"
 #include <SFML/Graphics.hpp>
 #include "../add_entity.h"
+
+#include "../define.h"
+#include "../astar_snake_launcher.h"
+#include "../components/cmp_snake_body.h"
 
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype
@@ -56,6 +60,19 @@ void MenuScene::SetTitle() {
 	titleSprite.setTexture(titleTexture);
 	titleSprite.setPosition(windowSizeMenu.x / 2, windowSizeMenu.y / 3.6f);
 	titleSprite.setOrigin(titleTextureSize.x / 2, titleTextureSize.y / 2);
+}
+
+int oops() {
+	RenderWindow win(VideoMode(W_WIDTH, W_HEIGHT), "Snake", Style::Default);
+	win.setKeyRepeatEnabled(true);
+
+	srand(SEED);
+
+	Game g;
+	g.play(win);
+	g.gameOver(win);
+
+	return EXIT_SUCCESS;
 }
 
 void MenuScene::Load() {
@@ -148,11 +165,11 @@ void MenuScene::Update(const double& dt) {
 		{
 		case 0:
 			sound2.play();
-			Engine::ChangeScene(&prototype);
+			oops();
 			break;
 		case 1:
 			sound2.play();
-			Engine::ChangeScene(&load);
+			Engine::ChangeScene(&level1);
 			break;
 		case 2:
 			sound2.play();

@@ -1,5 +1,5 @@
 #include "engine.h"
-#include "../game.h"
+#include "../app.h"
 #include "scene_splash.h"
 #include "../components/cmp_text.h"
 #include "../scenes/scene_menu.h"

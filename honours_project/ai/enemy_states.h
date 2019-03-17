@@ -1,6 +1,6 @@
 #pragma once
 
-#include "components/cmp_state_machine.h"
+#include "../components/cmp_state_machine.h"
 
 class NormalState : public State
 {

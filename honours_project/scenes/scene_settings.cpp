@@ -1,6 +1,6 @@
 #include "engine.h"
 #include "scene_settings.h"
-#include "../game.h"
+#include "../app.h"
 #include "system_renderer.h"
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
