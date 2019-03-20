@@ -32,7 +32,11 @@ add_subdirectory("lib/b2d/Box2D")
 set(B2D_INCS "lib/b2d/Box2D/")
 link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
 
-# FANN - Fast Artificial Neural Network Library
+# FANN - Fast library
+add_subdirectory("lib/fann")
+#include_directories("lib/fann/include/")
+set(FANN_INCS "lib/fann/")
+link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
 
 #### Engine ####
 file(GLOB_RECURSE RESOURCE_FILES "res/*.*")
@@ -55,17 +59,24 @@ file(GLOB_RECURSE SOURCE_FILES engine/lib_ecm/*.cpp engine/lib_ecm/*.h)
 add_library(lib_ecm STATIC ${SOURCE_FILES})
 target_include_directories(lib_ecm INTERFACE "${CMAKE_SOURCE_DIR}/engine/lib_ecm" )
 target_link_libraries(lib_ecm PRIVATE lib_maths)
+## FANN lib
+file(GLOB_RECURSE SOURCE_FILES lib/fann/*.cpp lib/fann/*.h)
+add_library(fann STATIC ${SOURCE_FILES})
+target_include_directories(fann INTERFACE "${CMAKE_SOURCE_DIR}/lib/fann")
+target_link_libraries(sfml-graphics)
 
 #### honours_project ####
 file(GLOB_RECURSE SOURCES honours_project/*.cpp honours_project/*.h)
 file(GLOB_RECURSE CMPNTS honours_project/components/*.cpp honours_project/components/*.h)
 file(GLOB_RECURSE SCENES honours_project/scenes/*.cpp honours_project/scenes/*.h)
 file(GLOB_RECURSE AI honours_project/ai/*.cpp honours_project/ai/*.h)
+#file(GLOB_RECURSE FANN lib/fann/*.cpp lib/fann/*.h lib/fann/*.dll lib/fann/*.exp lib/fann/*.ilk lib/fann/*.pdb lib/fann/*.hpp)
 add_executable(SNAKE ${SOURCES} ${CMPNTS} ${SCENES} ${AI} ${RESOURCE_FILES})
 source_group("components" FILES ${CMPNTS})
 source_group("scenes" FILES ${SCENES})
 source_group("ai" FILES ${AI})
 source_group("resources" FILES ${RESOURCE_FILES})
+#source_group("fann" FILES ${FANN})
 target_link_libraries(SNAKE lib_engine)
 set(EXECUTABLES ${EXECUTABLES} SNAKE)
 
@@ -146,7 +157,6 @@ IF(WIN32)
 ELSE()
   set(CPACK_GENERATOR ZIP)
 ENDIF(WIN32)
-
 
 set(CPACK_PACKAGE_FILE_NAME ${CMAKE_PROJECT_NAME})
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Honours")

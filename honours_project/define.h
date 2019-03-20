@@ -18,7 +18,6 @@
 // I set it to G_WIDTH+G_HEIGHT to be sure there will be no negative values
 #define WEIGHT_REF		(G_WIDTH+G_HEIGHT)
 
-
 // Snake directions
 // Used to facilitate some calculations, don't touch
 #define NONE			0

@@ -17,6 +17,13 @@
 #include "../astar_snake_launcher.h"
 #include "../components/cmp_snake_body.h"
 
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <deque>
+#include <chrono>
+#include <random>
+#include "../Neural_Network_Launcher.h"
+
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype
 // Version 0.1.2
@@ -74,6 +81,7 @@ int oops() {
 
 	return EXIT_SUCCESS;
 }
+
 
 void MenuScene::Load() {
 	{
@@ -169,7 +177,7 @@ void MenuScene::Update(const double& dt) {
 			break;
 		case 1:
 			sound2.play();
-			Engine::ChangeScene(&level1);
+			Stage::Stage();
 			break;
 		case 2:
 			sound2.play();

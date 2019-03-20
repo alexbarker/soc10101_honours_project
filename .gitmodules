@@ -4,3 +4,6 @@
 [submodule "lib/b2d"]
 	path = lib/b2d
 	url = https://github.com/dooglz/Box2D
+[submodule "lib/fann"]
+	path = lib/fann
+	url = https://github.com/libfann/fann.git
