@@ -22,7 +22,7 @@ Repository for 4th year SOC10101 Honours Project (40-Credits) Edinburgh Napier U
 | 0.2.0 | Implemented AI Visualization - Manhattan Heat Map |
 | 0.2.0 | Implemented AI Visualization - Proximity Map |
 | 0.3.0 | Fast Artificial Neural Network Library (FANN) |
+| 0.3.1 | Added Neural Network Snake |
 | 0.4.0 |  |
-| 0.5.0 |  |
 
 
