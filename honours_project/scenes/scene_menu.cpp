@@ -74,11 +74,25 @@ int oops() {
 	win.setKeyRepeatEnabled(true);
 
 	srand(SEED);
+	minstd_rand* randomGenerator;
 
 	Game g;
 	g.play(win);
 	g.gameOver(win);
 
+	return EXIT_SUCCESS;
+}
+
+int oops2() {
+
+	srand(SEED);
+
+	Stage g;
+	g.reset();
+	g.init_data();
+	g.oops3();
+
+	//Stage::Stage();
 	return EXIT_SUCCESS;
 }
 
@@ -177,7 +191,7 @@ void MenuScene::Update(const double& dt) {
 			break;
 		case 1:
 			sound2.play();
-			Stage::Stage();
+			oops2();
 			break;
 		case 2:
 			sound2.play();

@@ -4,19 +4,17 @@
 #include <deque>
 #include <chrono>
 #include <random>
-#include "../../fann/fann.h"
+#include "../lib/fann/src/include/fann.h"
 #include "define.h"
 
 using namespace std;
 
-const int training_iterations = 900000;
+const int training_iterations = 10000000;
 
-const int width = 600;
-const int height = 600;
+const int width = 1910;
+const int height = 990;
 
-const int board_size = 20;
-
-
+const int board_size = 30;
 
 struct Point
 {
@@ -58,6 +56,7 @@ public:
 		init_data();
 		reset();
 		
+		
 	};
 	Stage(Stage *stage)
 	{
@@ -71,8 +70,9 @@ public:
 				bool p = stage->board[x][y];
 				board[x][y] = p;
 			}
-		//board = stage->board;
+		board = stage->board;
 		snake = stage->snake;
+		
 	}
 	~Stage()
 	{

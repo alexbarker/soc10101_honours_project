@@ -13,12 +13,15 @@ const int INF = 123456;
 struct fann *ann;
 bool board_data[board_size][board_size];
 
-minstd_rand* randomGenerator = 0;
+minstd_rand* randomGenerator;
 
 int random(int from, int to)
 {
+	randomGenerator = new  std::minstd_rand(chrono::system_clock::now().time_since_epoch().count());
 	return (*randomGenerator)() % (to - from + 1) + from;
 }
+
+
 
 enum Direction
 {
@@ -26,7 +29,9 @@ enum Direction
 };
 
 void Stage::init_data()
+
 {
+	
 	debug = false;
 	board = new bool*[board_size];
 	for (int x = 0; x < board_size; x++)
@@ -37,6 +42,7 @@ void Stage::init_data()
 			board[x][y] = 0;
 		}
 	}
+	
 }
 void Stage::reset()
 {
@@ -58,6 +64,7 @@ void Stage::reset()
 
 	random_apple();
 	score = 0;
+	
 }
 bool Stage::iteration()
 {
@@ -133,7 +140,7 @@ void Stage::random_apple()
 }
 
 
-int makeDir(int base, int d)
+int Stage::makeDir(int base, int d)
 {
 	if (d == 0)
 	{
@@ -188,7 +195,7 @@ int makeDir(int base, int d)
 			}
 }
 
-void createInput(Stage& game, fann_type* input, int d)
+void Stage::createInput(Stage& game, fann_type* input, int d)
 {
 	int x = game.snake.front().x;
 	int y = game.snake.front().y;
@@ -280,7 +287,7 @@ int curiosity = training_iterations;//%
 
 
 
-void think(Stage& game, bool debug)
+void Stage::think(Stage& game, bool debug)
 {
 	
 	fann_type *output_tmp;
@@ -374,11 +381,12 @@ void think(Stage& game, bool debug)
 	if (debug)cout << "XXXTEST: " << output_tmp[0] << " -<> " << output[0] << endl;
 }
 
-void oops3()
+
+
+void Stage::oops3()
 {
 	minstd_rand* randomGenerator;
 	randomGenerator = new  std::minstd_rand(chrono::system_clock::now().time_since_epoch().count());
-	//randomGenerator(SEED);
 
 	const unsigned int num_input = 4;
 	const unsigned int num_output = 1;

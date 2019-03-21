@@ -34,8 +34,8 @@ link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
 
 # FANN - Fast library
 add_subdirectory("lib/fann")
-#include_directories("lib/fann/include/")
-set(FANN_INCS "lib/fann/")
+#include_directories("lib/fann/src/include")
+set(FANN_INCS "lib/fann")
 link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
 
 #### Engine ####
@@ -59,11 +59,6 @@ file(GLOB_RECURSE SOURCE_FILES engine/lib_ecm/*.cpp engine/lib_ecm/*.h)
 add_library(lib_ecm STATIC ${SOURCE_FILES})
 target_include_directories(lib_ecm INTERFACE "${CMAKE_SOURCE_DIR}/engine/lib_ecm" )
 target_link_libraries(lib_ecm PRIVATE lib_maths)
-## FANN lib
-file(GLOB_RECURSE SOURCE_FILES lib/fann/*.cpp lib/fann/*.h)
-add_library(fann STATIC ${SOURCE_FILES})
-target_include_directories(fann INTERFACE "${CMAKE_SOURCE_DIR}/lib/fann")
-target_link_libraries(sfml-graphics)
 
 #### honours_project ####
 file(GLOB_RECURSE SOURCES honours_project/*.cpp honours_project/*.h)
@@ -102,6 +97,7 @@ foreach (exe ${EXECUTABLES})
   )
 
   target_link_libraries(${exe}
+    floatfann
     lib_maths
     optimized sfml-audio debug sfml-audio-d
     optimized sfml-window debug sfml-window-d

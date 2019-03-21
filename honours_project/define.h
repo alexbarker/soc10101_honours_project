@@ -12,6 +12,7 @@
 #define G_WIDTH			(3*W_WIDTH/(4*S_SIZE))
 #define G_HEIGHT		(W_HEIGHT/S_SIZE)
 #define SEED			time(NULL)				// For the RNG
+#define SEED2			time(NULL)
 #define NB_PLAYER		10
 #define NB_APPLE		3
 // Maximum weight of a node (= weight of snake body parts)

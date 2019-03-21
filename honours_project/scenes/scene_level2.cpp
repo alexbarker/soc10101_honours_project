@@ -21,7 +21,7 @@
 #include <deque>
 #include <chrono>
 #include <random>
-#include "../../fann/fann.h"
+#include "../lib/fann/src/include/fann.h"
 
 
 // SET09121 2017-8 TR2 001 - Games Engineering
