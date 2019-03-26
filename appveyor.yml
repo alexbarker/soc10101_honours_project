@@ -2,7 +2,7 @@ version: 1.0.{build}
 image: Visual Studio 2017
 configuration: Release
 before_build:
-- cmd: git submodule update --init --recursive & cmake -G "Visual Studio 15 2017 Win64"
+- cmd: git submodule update --init --recursive & cmake -G "Visual Studio 15 2017 Win64" .
 build:
   project: SNAKE.vcxproj
   verbosity: minimal
