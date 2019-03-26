@@ -201,6 +201,12 @@ void MenuScene::Load() {
 		menu[8].setString("Quit");
 		menu[8].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 360));
 
+		auto txtVersion2 = makeEntity();
+		auto t27 = txtVersion2->addComponent<TextComponent>("Exploratory Software Version 0.4.3");
+		t27->getText().setCharacterSize(12);
+		t27->getText().setOrigin(t27->getText().getGlobalBounds().width / 2, t27->getText().getGlobalBounds().height / 2);
+		txtVersion2->setPosition(Vector2f(t27->getText().getGlobalBounds().width / 1.9, 10));
+
 		selectedItemIndex = 0;
 	}
 	setLoaded(true);

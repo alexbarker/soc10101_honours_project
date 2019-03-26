@@ -31,6 +31,14 @@ struct Point_1mil {
 
 class Stage_1mil {
 public:
+	sf::Texture texture1;
+	sf::Sprite crystal_object;
+	sf::Texture texture2;
+	sf::Sprite head_object;
+	sf::Texture texture3;
+	sf::Sprite field_object;
+	sf::RectangleShape vert_bar;
+
 	bool debug;
 	bool **board;
 	deque<Point_1mil> snake;

@@ -64,6 +64,11 @@ void TutorialScene::Load() {
 		t5->getText().setOrigin(t5->getText().getGlobalBounds().width / 2, t5->getText().getGlobalBounds().height / 2);
 		txtBack->setPosition(Vector2f(Engine::GetWindow().getSize().x / 1.12, (Engine::GetWindow().getSize().y - (Engine::GetWindow().getSize().y / 16.0))));
 
+		auto txtVersion3 = makeEntity();
+		auto t28 = txtVersion3->addComponent<TextComponent>("Exploratory Software Version 0.4.3");
+		t28->getText().setCharacterSize(12);
+		t28->getText().setOrigin(t28->getText().getGlobalBounds().width / 2, t28->getText().getGlobalBounds().height / 2);
+		txtVersion3->setPosition(Vector2f(t28->getText().getGlobalBounds().width / 1.9, 10));
 	}
 
 	AddEntity::makeWalls(this);

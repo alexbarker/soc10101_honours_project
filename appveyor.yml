@@ -7,7 +7,7 @@ build:
   project: SNAKE.vcxproj
   verbosity: minimal
 after_build:
-- cmd: 7z a honours.zip %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/SNAKE.exe %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/*.dll %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/res
+- cmd: 7z a Honours.zip %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/SNAKE.exe %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/*.dll %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/res
 artifacts:
 - path: /*.zip
   name: honours_zip
@@ -16,6 +16,6 @@ artifacts:
 deploy:
 - provider: GitHub
   auth_token:
-    secure: Mqo8fCDMKtaMq5AIUyrfbf19mF1hJ0cFJiBDt+JCinmmahfHdTqlXmpiMJL6RNBZ
+    secure: wKyML1y5xwS4ef0KqcWR2L7yK2SALPfyfXBgzUEBAd6bj47LowG9mSdlGHhwx7K8
   artifact: honours_zip, honours_installer
   prerelease: true
