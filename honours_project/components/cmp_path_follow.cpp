@@ -1,5 +1,5 @@
 #include "cmp_path_follow.h"
-#include "../ai/astar.h"
+#include "../ai/oldastar.h"
 #include <LevelSystem.h>
 
 using namespace sf;

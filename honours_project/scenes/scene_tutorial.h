@@ -11,4 +11,4 @@ public:
 
 	void Render() override;
 };
-#pragma once
+

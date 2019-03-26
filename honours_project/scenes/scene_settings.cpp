@@ -12,11 +12,11 @@
 #include "../components/cmp_text.h"
 
 // SOC10101 - Honours Project (40 Credits)
-// Snake Prototype
-// Version 0.1.2
+// Snake Prototype 3
+// Version 0.x.x
 // Alexander Barker 
 // 40333139
-// Last Updated on 16th November 2018
+// Last Updated on 26th March 2019
 // scene_settings.cpp - This file is used to call for loads, updates and renders for Settings.
 
 using namespace std;
@@ -78,6 +78,18 @@ void SettingsScene::Load() {
 	settingsMenu[4].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 200));
 
 	selectedItemIndex2 = 0;
+
+	auto txtBack = makeEntity();
+	auto t23 = txtBack->addComponent<TextComponent>("Return to Main Menu Press [Esc]");
+	t23->getText().setCharacterSize(14);
+	t23->getText().setOrigin(t23->getText().getGlobalBounds().width / 2, t23->getText().getGlobalBounds().height / 2);
+	txtBack->setPosition(Vector2f(Engine::GetWindow().getSize().x / 1.12, (Engine::GetWindow().getSize().y - (Engine::GetWindow().getSize().y / 16.0))));
+
+	auto txtVersion = makeEntity();
+	auto t24 = txtVersion->addComponent<TextComponent>("Exploratory Software Version 0.4.3");
+	t24->getText().setCharacterSize(12);
+	t24->getText().setOrigin(t24->getText().getGlobalBounds().width / 2, t24->getText().getGlobalBounds().height / 2);
+	txtVersion->setPosition(Vector2f(t24->getText().getGlobalBounds().width / 1.9, 10));
 
 	setLoaded(true);
 }

@@ -4,6 +4,14 @@
 #include <SFML/Graphics/Shape.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype 3
+// Version 0.x.x
+// Alexander Barker 
+// 40333139
+// Last Updated on 17th November 2018
+// xxx.cpp - XXX.
+
 class SpriteComponent : public Component {
 protected:
   std::shared_ptr<sf::Sprite> _sprite;
@@ -25,7 +33,6 @@ public:
 class ShapeComponent : public Component {
 protected:
   std::shared_ptr<sf::Shape> _shape;
-  // sf::Shape _shape;
 
 public:
   ShapeComponent() = delete;

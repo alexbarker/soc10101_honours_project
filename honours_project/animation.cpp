@@ -2,12 +2,12 @@
 #include "system_renderer.h"
 #include <cmath>
 
-// SET09121 2017-8 TR2 001 - Games Engineering
-// Picobots
-// Version 0.7.0
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype 3
+// Version 0.x.x
 // Alexander Barker 
 // 40333139
-// Last Updated on 27th April 2018
+// Last Updated on 27th November 2018
 // animation.cpp - This file is used to produce animations from spritesheets.
 
 using namespace sf;

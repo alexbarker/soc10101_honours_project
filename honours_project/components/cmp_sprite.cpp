@@ -2,6 +2,14 @@
 #include "cmp_sprite.h"
 #include "system_renderer.h"
 
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype 3
+// Version 0.x.x
+// Alexander Barker 
+// 40333139
+// Last Updated on 17th November 2018
+// xxx.cpp - XXX.
+
 using namespace std;
 
 SpriteComponent::SpriteComponent(Entity* p)

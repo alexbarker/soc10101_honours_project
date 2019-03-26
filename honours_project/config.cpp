@@ -1,6 +1,14 @@
 #include "components/stdafx.h"
 #include "config.h"
 
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype 3
+// Version 0.x.x
+// Alexander Barker 
+// 40333139
+// Last Updated on 19th March 2019
+// config.cpp - XXX.
+
 Config::Config() {
 	weightBFS = true;
 	displayWeight = false;

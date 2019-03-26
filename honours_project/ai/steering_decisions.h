@@ -4,6 +4,14 @@
 #include "components/cmp_decision_tree.h"
 #include "components/cmp_state_machine.h"
 
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype 3
+// Version 0.1.0
+// Alexander Barker 
+// 40333139
+// Last Updated on 10th October 2018
+// xxx.h - XXX.
+
 class DistanceDecision : public Decision
 {
 private:
@@ -12,7 +20,7 @@ private:
 protected:
 	std::shared_ptr<DecisionTreeNode> getBranch(Entity* owner) final
 	{
-		float dist = sf::length(owner->getPosition() - _player->getPosition());
+		double dist = sf::length(owner->getPosition() - _player->getPosition());
 		if (dist < _distance)
 			return _trueNode;
 		else

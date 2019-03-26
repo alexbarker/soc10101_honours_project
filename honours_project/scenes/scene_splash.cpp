@@ -13,18 +13,15 @@
 #include "LevelSystem.h"
 
 // SOC10101 - Honours Project (40 Credits)
-// Snake Prototype
-// Version 0.1.2
+// Snake Prototype 3
+// Version 0.x.x
 // Alexander Barker 
 // 40333139
-// Last Updated on 16th November 2018
+// Last Updated on 26th March 2019
 // scene_splash.cpp - This file is used to call for loads, updates and renders for Splash Screen.
 
 using namespace std;
 using namespace sf;
-//MusicPlayer s1;
-//MusicPlayer s2;
-//MusicPlayer s3;
 
 sf::Sprite splashSprite1;
 sf::Texture splashTexture1;
@@ -40,7 +37,6 @@ sf::Time now1;
 sf::Time now2;
 
 void SplashScene::SetBackground() {
-	//s1.playing();
 	splashTexture1 = *Resources::load<Texture>("SplashScreen1.png");
 	float x = Engine::GetWindow().getSize().x;
 	float y = Engine::GetWindow().getSize().y;
@@ -54,43 +50,18 @@ void SplashScene::SetBackground() {
 	splashSprite1.setScale(ScaleX, ScaleY);
 	splashSprite1.setOrigin(0, 0);
 	setLoaded(true);
-	//s1.playing();
 
 	sf::Clock clock; // starts the clock
 	while (now1 < sf::milliseconds(4000)) {
 		now1 = clock.getElapsedTime();
 	}
 	clock.restart();
-	/*
-	s1.playing();
-	splashTexture2 = *Resources::load<Texture>("SplashScreen2.png");
-	float x2 = Engine::GetWindow().getSize().x;
-	float y2 = Engine::GetWindow().getSize().y;
-	Engine::GetWindow().setView(sf::View(sf::FloatRect(0, 0, x2, y2)));
-	splashSize2 = splashTexture2.getSize(); //Get size of texture.
-	windowSizeSplash2 = Engine::GetWindow().getSize();             //Get size of window.
-	float ScaleX1 = (float)windowSizeSplash2.x / splashSize2.x;
-	float ScaleY1 = (float)windowSizeSplash2.y / splashSize2.y;     //Calculate scale.
-	splash_target2 = { x2 , y2 };
-	splashSprite2.setTexture(splashTexture2);
-	splashSprite2.setPosition(0, 0);
-	splashSprite2.setScale(ScaleX1, ScaleY1);
-	splashSprite2.setOrigin(0, 0);
-	setLoaded(true);
-	s1.playing();
-	while (now2 < sf::milliseconds(4000)) {
-		now2 = clock.getElapsedTime();
-	}
-	clock.restart();
-	//std::this_thread::sleep_for(std::chrono::milliseconds(4000));
-	*/
+
 }
 
 void SplashScene::Load() {
-	//s1.play1(0, true);
 	SetBackground();
 	setLoaded(true);
-	//s1.playing();
 	Engine::ChangeScene(&menu);
 }
 

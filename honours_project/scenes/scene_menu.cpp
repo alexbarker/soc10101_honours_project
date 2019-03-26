@@ -14,22 +14,28 @@
 #include "../add_entity.h"
 
 #include "../define.h"
-#include "../astar_snake_launcher.h"
-#include "../components/cmp_snake_body.h"
+#include "../ai/astar_snake_launcher_1snake.h"
+#include "../components/cmp_snake_body_1snake.h"
+#include "../ai/astar_snake_launcher_10snakes.h"
+#include "../components/cmp_snake_body_10snakes.h"
+#include "../ai/astar_snake_launcher_50snakes.h"
+#include "../components/cmp_snake_body_50snakes.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <deque>
 #include <chrono>
 #include <random>
-#include "../Neural_Network_Launcher.h"
+#include "../ai/neural_network_launcher_100k.h"
+#include "../ai/neural_network_launcher_1mil.h"
+#include "../ai/neural_network_launcher_10mil.h"
 
 // SOC10101 - Honours Project (40 Credits)
-// Snake Prototype
-// Version 0.1.2
+// Snake Prototype 3
+// Version 0.x.x
 // Alexander Barker 
 // 40333139
-// Last Updated on 16th November 2018
+// Last Updated on 26th March 2019
 // scene_menu.cpp - This file is used to call for loads, updates and renders for Main Menu.
 
 using namespace std;
@@ -41,13 +47,6 @@ Vector2f target;
 sf::Vector2u titleTextureSize;  //Added to store texture size.
 sf::Vector2u windowSizeMenu;   //Added to store window size.
 int fadeCounter = 0;
-
-sf::Texture roboarmTexture;
-sf::IntRect roboSource(0, 0, 400, 300);
-sf::Sprite roboarm(roboarmTexture, roboSource);
-sf::Texture roboarmTexture2;
-sf::IntRect roboSource2(0, 0, -400, 300);
-sf::Sprite roboarm2(roboarmTexture2, roboSource2);
 sf::Clock clock1;
 
 sf::SoundBuffer effect1;
@@ -69,39 +68,83 @@ void MenuScene::SetTitle() {
 	titleSprite.setOrigin(titleTextureSize.x / 2, titleTextureSize.y / 2);
 }
 
-int oops() {
-	RenderWindow win(VideoMode(W_WIDTH, W_HEIGHT), "Snake", Style::Default);
+int startAstar1() {
+	RenderWindow win(VideoMode(W_WIDTH, W_HEIGHT+50), "Astar Snake", Style::Default);
 	win.setKeyRepeatEnabled(true);
 
 	srand(SEED);
-	minstd_rand* randomGenerator;
 
-	Game g;
-	g.play(win);
-	g.gameOver(win);
+	Game1 g1;
+	g1.play(win);
+	g1.gameOver(win);
 
 	return EXIT_SUCCESS;
 }
 
-int oops2() {
+int startAstar10() {
+	RenderWindow win(VideoMode(W_WIDTH, W_HEIGHT + 50), "Astar 10 Snakes", Style::Default);
+	win.setKeyRepeatEnabled(true);
 
 	srand(SEED);
 
-	Stage g;
-	g.reset();
-	g.init_data();
-	g.oops3();
+	Game10 g2;
+	g2.play(win);
+	g2.gameOver(win);
 
-	//Stage::Stage();
 	return EXIT_SUCCESS;
 }
 
+int startAstar50() {
+	RenderWindow win(VideoMode(W_WIDTH, W_HEIGHT + 50), "Astar 50 Snakes", Style::Default);
+	win.setKeyRepeatEnabled(true);
+
+	srand(SEED);
+
+	Game50 g3;
+	g3.play(win);
+	g3.gameOver(win);
+
+	return EXIT_SUCCESS;
+}
+
+int startNN100k() {
+
+	srand(SEED);
+
+	Stage_100k p1;
+	p1.reset();
+	p1.init_data();
+	p1.startNN100k();
+
+	return EXIT_SUCCESS;
+}
+
+int startNN1mil() {
+
+	srand(SEED);
+
+	Stage_1mil p2;
+	p2.reset();
+	p2.init_data();
+	p2.startNN1mil();
+
+	return EXIT_SUCCESS;
+}
+
+int startNN10mil() {
+
+	srand(SEED);
+
+	Stage_10mil p3;
+	p3.reset();
+	p3.init_data();
+	p3.startNN10mil();
+
+	return EXIT_SUCCESS;
+}
 
 void MenuScene::Load() {
 	{
-		//s2.stop();
-		//s3.stop();
-		//s1.playing();
 		float x2 = Engine::getWindowSize().x;
 		float y2 = Engine::getWindowSize().y;
 		SetTitle();
@@ -110,47 +153,55 @@ void MenuScene::Load() {
 		sound1.setBuffer(effect1);
 		effect2.loadFromFile("res/sound/menu.ogg");
 		sound2.setBuffer(effect2);
-		/*
-		roboarm.setPosition(x2 - 400.0f, 200.0f);
-		roboarmTexture.loadFromFile("res/img/RoboarmSprite.png");
-		roboarm2.setPosition(0, 200.0f);
-		roboarmTexture2.loadFromFile("res/img/RoboarmSprite.png");
-		*/
+
 		font.loadFromFile("res/fonts/RobotoMono-Regular.ttf");
 
 		menu[0].setFont(font);
 		menu[0].setFillColor(sf::Color::Green);
-		menu[0].setString("Snake Prototype");
-		menu[0].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 40));
+		menu[0].setString("Astar Snake");
+		menu[0].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 40));
 
 		menu[1].setFont(font);
 		menu[1].setFillColor(sf::Color::White);
-		menu[1].setString("<Empty>");
-		menu[1].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 80));
+		menu[1].setString("Astar 10 Snakes");
+		menu[1].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 80));
 
 		menu[2].setFont(font);
 		menu[2].setFillColor(sf::Color::White);
-		menu[2].setString("<Empty>");
-		menu[2].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 120));
+		menu[2].setString("Astar 50 Snakes");
+		menu[2].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 120));
 
 		menu[3].setFont(font);
 		menu[3].setFillColor(sf::Color::White);
-		menu[3].setString("Help");
-		menu[3].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 160));
+		menu[3].setString("Neural Network Snake (100k)");
+		menu[3].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 160));
 
 		menu[4].setFont(font);
 		menu[4].setFillColor(sf::Color::White);
-		menu[4].setString("Settings");
-		menu[4].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 200));
+		menu[4].setString("Neural Network Snake (1mil)");
+		menu[4].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 200));
 
 		menu[5].setFont(font);
 		menu[5].setFillColor(sf::Color::White);
-		menu[5].setString("Quit");
-		menu[5].setPosition(sf::Vector2f((x2 / 2) - 120, (y2 / 2) + 240));
+		menu[5].setString("Neural Network Snake (10mil)");
+		menu[5].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 240));
+
+		menu[6].setFont(font);
+		menu[6].setFillColor(sf::Color::White);
+		menu[6].setString("Tutorial");
+		menu[6].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 280));
+
+		menu[7].setFont(font);
+		menu[7].setFillColor(sf::Color::White);
+		menu[7].setString("Settings");
+		menu[7].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 320));
+
+		menu[8].setFont(font);
+		menu[8].setFillColor(sf::Color::White);
+		menu[8].setString("Quit");
+		menu[8].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 360));
 
 		selectedItemIndex = 0;
-
-		//std::this_thread::sleep_for(std::chrono::milliseconds(4000));
 	}
 	setLoaded(true);
 }
@@ -187,26 +238,39 @@ void MenuScene::Update(const double& dt) {
 		{
 		case 0:
 			sound2.play();
-			oops();
+			startAstar1();
 			break;
 		case 1:
 			sound2.play();
-			oops2();
+			startAstar10();
 			break;
 		case 2:
 			sound2.play();
-			Engine::ChangeScene(&load);
+			startAstar50();
 			break;
 		case 3:
 			sound2.play();
-			Engine::ChangeScene(&tutorial);
+			startNN100k();
 			break;
 		case 4:
+			sound2.play();
+			startNN1mil();
+			break;
+		case 5:
+			sound2.play();
+			startNN10mil();
+			break;
+		case 6:
+			sound2.play();
+			Engine::ChangeScene(&tutorial);
+			std::this_thread::sleep_for(std::chrono::milliseconds(170));
+			break;
+		case 7:
 			sound2.play();
 			Engine::ChangeScene(&settings);
 			std::this_thread::sleep_for(std::chrono::milliseconds(170));
 			break;
-		case 5:
+		case 8:
 			sound2.play();
 			Engine::GetWindow().close();
 			break;
@@ -216,39 +280,15 @@ void MenuScene::Update(const double& dt) {
 
 void MenuScene::Render() {
 	Scene::Render();
-	/*
-	if (clock1.getElapsedTime().asSeconds() > 0.2f) {
-		if (roboSource.left == 6000) {
-			roboSource.left = 0;
-			roboSource2.left = 0;
-			if (clock1.getElapsedTime().asSeconds() > 0.2f) { AddEntity::makeFakePlayer2(this, Vector2f(0.f, 450.f), Vector2f(70.f, 950.f), 2.0f); }
-			if (clock1.getElapsedTime().asSeconds() > 0.2f) { AddEntity::makeFakePlayer1(this, Vector2f(Engine::getWindowSize().x - 25.f, 450.f), Vector2f(Engine::getWindowSize().x - 70.f, 450.f), 2.0f); }
-		}
-		else {
 
-			roboSource.left += 400;
-			roboarm.setTextureRect(roboSource);
-			roboSource2.left += 400;
-			roboarm2.setTextureRect(roboSource2);
-			clock1.restart();
-		}
-	}
-	*/
 	if (fadeCounter <= 250) {
-		//roboarm.setColor(sf::Color(255, 255, 255, fadeCounter));
-		//roboarm2.setColor(sf::Color(255, 255, 255, fadeCounter));
 		titleSprite.setColor(sf::Color(255, 255, 255, fadeCounter));
 		fadeCounter++;
-		//Renderer::queue(&roboarm);
-		//Renderer::queue(&roboarm2);
+		fadeCounter++;
 		Renderer::queue(&titleSprite);
 	}
 	else {
-		//roboarm.setColor(sf::Color(255, 255, 255, 255));
-		//roboarm2.setColor(sf::Color(255, 255, 255, 255));
 		titleSprite.setColor(sf::Color(255, 255, 255, 255));
-		//Renderer::queue(&roboarm);
-		//Renderer::queue(&roboarm2);
 		Renderer::queue(&titleSprite);
 		for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
 		{

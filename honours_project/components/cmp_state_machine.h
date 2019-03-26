@@ -4,6 +4,14 @@
 #include <unordered_map>
 #include <string>
 
+// SOC10101 - Honours Project (40 Credits)
+// Snake Prototype 3
+// Version 0.x.x
+// Alexander Barker 
+// 40333139
+// Last Updated on 17th November 2018
+// xxx.cpp - XXX.
+
 class State
 {
 public:

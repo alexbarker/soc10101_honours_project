@@ -5,7 +5,7 @@
 #include "SFML/Graphics.hpp"
 #include "../components/cmp_music.h"
 
-#define MAX_NUMBER_OF_ITEMS 6
+#define MAX_NUMBER_OF_ITEMS 9
 
 class MenuScene : public Scene 
 {
