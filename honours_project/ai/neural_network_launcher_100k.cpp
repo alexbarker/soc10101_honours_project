@@ -315,18 +315,26 @@ void Stage_100k::startNN100k() {
 	fann_set_activation_function_hidden(ann_100k, FANN_GAUSSIAN);
 	fann_set_activation_function_output(ann_100k, FANN_SIGMOID_SYMMETRIC);
 
-	sf::RenderWindow window(sf::VideoMode(600, 600), "Neural Network Snake");
+	sf::RenderWindow window(sf::VideoMode(900, 600), "Neural Network Snake - 100 Thousand");
 
 	Stage_100k game;
 	game.debug = false;
 
-	int field_size = width_100k / board_size_100k; // here we go
+	int field_size = width_100k / board_size_100k;
 	sf::RectangleShape field_object(sf::Vector2f(field_size, field_size));
-	field_object.setFillColor(sf::Color(255, 157, 0));
-	sf::RectangleShape crystal_object(sf::Vector2f(field_size, field_size));
-	crystal_object.setFillColor(sf::Color(0, 255, 0));
+	field_object.setFillColor(sf::Color(180, 225, 90));
+	texture1.loadFromFile(T_CRYSTAL);
+	crystal_object.setTexture(texture1);
 	sf::RectangleShape head_object(sf::Vector2f(field_size, field_size));
-	head_object.setFillColor(sf::Color(255, 97, 0));
+	head_object.setFillColor(sf::Color(200, 225, 80));
+
+	vert_bar.setSize(sf::Vector2f(6, 600));
+	vert_bar.setFillColor(sf::Color::White);
+	vert_bar.setPosition(600, 0);
+
+	horz_bar.setSize(sf::Vector2f(300, 6));
+	horz_bar.setFillColor(sf::Color::White);
+	horz_bar.setPosition(600, 200);
 
 	int speed_block = 0;
 	int speed_block_max = 50;
@@ -438,7 +446,8 @@ void Stage_100k::startNN100k() {
 		window.draw(crystal_object);
 		head_object.setPosition(game.snake.front().x * field_size, game.snake.front().y * field_size);
 		window.draw(head_object);
-
+		window.draw(vert_bar);
+		window.draw(horz_bar);
 		window.display();
 	}
 }

@@ -31,6 +31,15 @@ struct Point_100k {
 
 class Stage_100k {
 public:
+	sf::Texture texture1;
+	sf::Sprite crystal_object;
+	sf::Texture texture2;
+	sf::Sprite head_object;
+	sf::Texture texture3;
+	sf::Sprite field_object;
+	sf::RectangleShape vert_bar;
+	sf::RectangleShape horz_bar;
+
 	bool debug;
 	bool **board;
 	deque<Point_100k> snake;

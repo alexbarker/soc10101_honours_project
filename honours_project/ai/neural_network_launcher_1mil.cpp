@@ -315,7 +315,7 @@ void Stage_1mil::startNN1mil() {
 	fann_set_activation_function_hidden(ann_1mil, FANN_GAUSSIAN);
 	fann_set_activation_function_output(ann_1mil, FANN_SIGMOID_SYMMETRIC);
 
-	sf::RenderWindow window(sf::VideoMode(900, 600), "Neural Network Snake");
+	sf::RenderWindow window(sf::VideoMode(900, 600), "Neural Network Snake - 1 Million");
 
 	Stage_1mil game;
 	game.debug = false;
@@ -337,6 +337,10 @@ void Stage_1mil::startNN1mil() {
 	vert_bar.setSize(sf::Vector2f(6, 600));
 	vert_bar.setFillColor(sf::Color::White);
 	vert_bar.setPosition(600, 0);
+
+	horz_bar.setSize(sf::Vector2f(300, 6));
+	horz_bar.setFillColor(sf::Color::White);
+	horz_bar.setPosition(600, 200);
 
 	int speed_block = 0;
 	int speed_block_max = 50;
@@ -451,7 +455,7 @@ void Stage_1mil::startNN1mil() {
 		head_object.setPosition(game.snake.front().x * field_size, game.snake.front().y * field_size);
 		window.draw(head_object);
 		window.draw(vert_bar);
-
+		window.draw(horz_bar);
 		window.display();
 	}
 }

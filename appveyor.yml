@@ -7,7 +7,7 @@ build:
   project: SNAKE.vcxproj
   verbosity: minimal
 after_build:
-- cmd: 7z a Honours.zip %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/SNAKE.exe %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/*.dll %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/res
+- cmd: 7z a honours.zip %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/SNAKE.exe %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/*.dll %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/res
 artifacts:
 - path: /*.zip
   name: honours_zip

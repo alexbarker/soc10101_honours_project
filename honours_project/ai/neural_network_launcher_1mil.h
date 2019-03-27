@@ -38,6 +38,7 @@ public:
 	sf::Texture texture3;
 	sf::Sprite field_object;
 	sf::RectangleShape vert_bar;
+	sf::RectangleShape horz_bar;
 
 	bool debug;
 	bool **board;

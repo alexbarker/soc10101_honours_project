@@ -124,7 +124,7 @@ install( PROGRAMS ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} DESTINATION "bin/" CONFIG
 #Install component for resources
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/res" DESTINATION "bin/" CONFIGURATIONS Release COMPONENT resources_cmpt)
 #We disabled SFML's INSTALL component as it brings along junk, so we gotta make one ourselves
-install(DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Release/" DESTINATION "bin" CONFIGURATIONS Release COMPONENT libs_cmpt FILES_MATCHING PATTERN "*.dll" )
+install(DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Release/" DESTINATION "bin/" CONFIGURATIONS Release COMPONENT libs_cmpt FILES_MATCHING PATTERN "*.dll" )
 
 #Tell CPack about the libs and resources install components
 set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} resources_cmpt libs_cmpt)
@@ -160,7 +160,7 @@ if(${LICENSE})
   set(CPACK_RESOURCE_FILE_LICENSE ${LICENSE})
 endif(${LICENSE})
 set(CPACK_PACKAGE_VERSION_MAJOR "0")
-set(CPACK_PACKAGE_VERSION_MINOR "1")
-set(CPACK_PACKAGE_VERSION_PATCH "0")
+set(CPACK_PACKAGE_VERSION_MINOR "5")
+set(CPACK_PACKAGE_VERSION_PATCH "1")
 
 INCLUDE(CPack)
