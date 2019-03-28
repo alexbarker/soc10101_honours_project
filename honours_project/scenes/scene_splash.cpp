@@ -37,7 +37,7 @@ sf::Time now1;
 sf::Time now2;
 
 void SplashScene::SetBackground() {
-	splashTexture1 = *Resources::load<Texture>("SplashScreen1.png");
+	splashTexture1 = *Resources::load<Texture>("splashscreen.png");
 	float x = Engine::GetWindow().getSize().x;
 	float y = Engine::GetWindow().getSize().y;
 	splashSize1 = splashTexture1.getSize(); //Get size of texture.
