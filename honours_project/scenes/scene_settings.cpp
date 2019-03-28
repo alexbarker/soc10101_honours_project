@@ -13,10 +13,10 @@
 
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype 3
-// Version 0.x.x
+// Version 0.5.2
 // Alexander Barker 
 // 40333139
-// Last Updated on 26th March 2019
+// Last Updated on 28th March 2019
 // scene_settings.cpp - This file is used to call for loads, updates and renders for Settings.
 
 using namespace std;
@@ -30,10 +30,6 @@ sf::Sound sound2a;
 static shared_ptr<Entity> player;
 
 void SettingsScene::Load() {
-
-	//s2.stop();
-	//s3.stop();
-	//s1.playing();
 
 	effect1a.loadFromFile("res/sound/shoot.ogg");
 	sound1a.setBuffer(effect1a);
@@ -86,7 +82,7 @@ void SettingsScene::Load() {
 	txtBack->setPosition(Vector2f(Engine::GetWindow().getSize().x / 1.12, (Engine::GetWindow().getSize().y - (Engine::GetWindow().getSize().y / 16.0))));
 
 	auto txtVersion = makeEntity();
-	auto t24 = txtVersion->addComponent<TextComponent>("Exploratory Software Version 0.4.3");
+	auto t24 = txtVersion->addComponent<TextComponent>("Exploratory Software Version 0.5.2");
 	t24->getText().setCharacterSize(12);
 	t24->getText().setOrigin(t24->getText().getGlobalBounds().width / 2, t24->getText().getGlobalBounds().height / 2);
 	txtVersion->setPosition(Vector2f(t24->getText().getGlobalBounds().width / 1.9, 10));

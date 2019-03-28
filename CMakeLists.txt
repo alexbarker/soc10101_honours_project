@@ -123,8 +123,10 @@ INCLUDE(InstallRequiredSystemLibraries)
 install( PROGRAMS ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} DESTINATION "bin/" CONFIGURATIONS Release COMPONENT System )
 #Install component for resources
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/res" DESTINATION "bin/" CONFIGURATIONS Release COMPONENT resources_cmpt)
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/res/DLLs/" DESTINATION "bin/" CONFIGURATIONS Release COMPONENT resources_cmpt)
 #We disabled SFML's INSTALL component as it brings along junk, so we gotta make one ourselves
 install(DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Release/" DESTINATION "bin/" CONFIGURATIONS Release COMPONENT libs_cmpt FILES_MATCHING PATTERN "*.dll" )
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/res/DLLs/" DESTINATION "bin/" CONFIGURATIONS Release COMPONENT libs_cmpt FILES_MATCHING PATTERN "*.dll" )
 
 #Tell CPack about the libs and resources install components
 set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} resources_cmpt libs_cmpt)

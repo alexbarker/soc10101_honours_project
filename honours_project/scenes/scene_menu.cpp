@@ -32,10 +32,10 @@
 
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype 3
-// Version 0.x.x
+// Version 0.5.2
 // Alexander Barker 
 // 40333139
-// Last Updated on 26th March 2019
+// Last Updated on 28th March 2019
 // scene_menu.cpp - This file is used to call for loads, updates and renders for Main Menu.
 
 using namespace std;
@@ -59,9 +59,9 @@ void MenuScene::SetTitle() {
 	float x = Engine::GetWindow().getSize().x;
 	float y = Engine::GetWindow().getSize().y;
 	titleTextureSize = titleTexture.getSize();							//Get size of texture.
-	windowSizeMenu = Engine::GetWindow().getSize();               //Get size of window.
+	windowSizeMenu = Engine::GetWindow().getSize();					    //Get size of window.
 	float ScaleX = (float)windowSizeMenu.x / titleTextureSize.x;
-	float ScaleY = (float)windowSizeMenu.y / titleTextureSize.y;     //Calculate scale.
+	float ScaleY = (float)windowSizeMenu.y / titleTextureSize.y;        //Calculate scale.
 	target = { x , y };
 	titleSprite.setTexture(titleTexture);
 	titleSprite.setPosition(windowSizeMenu.x / 2, windowSizeMenu.y / 3.6f);
@@ -202,7 +202,7 @@ void MenuScene::Load() {
 		menu[8].setPosition(sf::Vector2f((x2 / 2.3) - 120, (y2 / 2.5) + 360));
 
 		auto txtVersion2 = makeEntity();
-		auto t27 = txtVersion2->addComponent<TextComponent>("Exploratory Software Version 0.4.3");
+		auto t27 = txtVersion2->addComponent<TextComponent>("Exploratory Software Version 0.5.2");
 		t27->getText().setCharacterSize(12);
 		t27->getText().setOrigin(t27->getText().getGlobalBounds().width / 2, t27->getText().getGlobalBounds().height / 2);
 		txtVersion2->setPosition(Vector2f(t27->getText().getGlobalBounds().width / 1.9, 10));

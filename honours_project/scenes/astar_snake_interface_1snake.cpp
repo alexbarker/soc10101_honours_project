@@ -7,11 +7,11 @@ using namespace sf;
 
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype 3
-// Version 0.x.x
+// Version 0.5.2
 // Alexander Barker 
 // 40333139
-// Last Updated on 26th March 2019
-// XXX.cpp - XXX.
+// Last Updated on 28th March 2019
+// astar_snake_interface_1snake.cpp - XXX.
 
 Gui1::Gui1() {
 	scrollVal = 0;
@@ -53,6 +53,24 @@ Gui1::Gui1() {
 
 	fontTitle.loadFromFile(FONT_TITLE);
 	fontScore.loadFromFile(FONT_SCORE);
+
+	mouse_text1.setString("To create obstacles, click the Left");
+	mouse_text1.setFont(fontTitle);
+	mouse_text1.setCharacterSize(W_HEIGHT / 50);
+	mouse_text1.setOutlineColor(Color::White);
+	mouse_text1.setPosition(W_WIDTH / 1.31, W_HEIGHT / 5.4);
+
+	mouse_text2.setString("Mouse button. To remove an obstacle,");
+	mouse_text2.setFont(fontTitle);
+	mouse_text2.setCharacterSize(W_HEIGHT / 50);
+	mouse_text2.setOutlineColor(Color::White);
+	mouse_text2.setPosition(W_WIDTH / 1.31, W_HEIGHT / 4.8);
+
+	mouse_text3.setString("click the Right Mouse button. ");
+	mouse_text3.setFont(fontTitle);
+	mouse_text3.setCharacterSize(W_HEIGHT / 50);
+	mouse_text3.setOutlineColor(Color::White);
+	mouse_text3.setPosition(W_WIDTH / 1.31, W_HEIGHT / 4.34);
 
 	title_score.setString("Snake Length");
 	title_score.setFont(fontTitle);
@@ -168,6 +186,9 @@ void Gui1::display(RenderWindow& win, std::vector<sf::Vector2i> fixedO, Snake1 s
 	win.draw(black_back3);
 	win.draw(horiz_bar_long);
 	win.draw(controls_text);
+	win.draw(mouse_text1);
+	win.draw(mouse_text2);
+	win.draw(mouse_text3);
 	win.draw(titleSprite3b);
 	win.display();
 }

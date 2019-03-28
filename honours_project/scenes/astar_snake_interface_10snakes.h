@@ -22,7 +22,7 @@ class Gui10 {
 		std::multimap<int, int> scoreMap;
 		sf::Font fontTitle, fontScore;
 		sf::RectangleShape vert_bar, horiz_bar, horiz_bar2, horiz_bar3, horiz_bar_long, black_back, black_back2, black_back3;
-		sf::Text title_score, score, controls_text;
+		sf::Text title_score, score, controls_text, mouse_text1, mouse_text2, mouse_text3;
 		sf::Sprite titleSprite4b;
 		sf::Texture titleTexture4b;
 

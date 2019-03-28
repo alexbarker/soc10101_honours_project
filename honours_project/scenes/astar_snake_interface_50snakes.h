@@ -9,11 +9,11 @@
 
 // SOC10101 - Honours Project (40 Credits)
 // Snake Prototype 3
-// Version 0.x.x
+// Version 0.5.2
 // Alexander Barker 
 // 40333139
 // Last Updated on 26th March 2019
-// XXX.cpp - XXX.
+// astar_snake_interface_50snakes.h
 
 class Gui50 {
 	private:
@@ -22,7 +22,7 @@ class Gui50 {
 		std::multimap<int, int> scoreMap;
 		sf::Font fontTitle, fontScore;
 		sf::RectangleShape vert_bar, horiz_bar, horiz_bar2, horiz_bar3, horiz_bar_long, black_back, black_back2, black_back3;
-		sf::Text title_score, score, controls_text;
+		sf::Text title_score, score, controls_text, mouse_text1, mouse_text2, mouse_text3;
 		sf::Sprite titleSprite5b;
 		sf::Texture titleTexture5b;
 
