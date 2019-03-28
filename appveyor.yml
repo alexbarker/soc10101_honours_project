@@ -4,7 +4,7 @@ configuration: Release
 before_build:
 - cmd: git submodule update --init --recursive & cmake -G "Visual Studio 15 2017 Win64" .
 build:
-  project: PACKAGE.vcxproj
+  project: SNAKE.vcxproj
   verbosity: minimal
 after_build:
 - cmd: 7z a honours.zip %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/SNAKE.exe %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/*.dll %APPVEYOR_BUILD_FOLDER%/bin/%CONFIGURATION%/res
