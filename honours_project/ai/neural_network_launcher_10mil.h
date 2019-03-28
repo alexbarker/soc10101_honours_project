@@ -38,7 +38,11 @@ public:
 	sf::Texture texture3;
 	sf::Sprite field_object;
 	sf::RectangleShape vert_bar;
-	sf::RectangleShape horz_bar;
+	sf::RectangleShape horz_bar, horz_bar2, horz_bar3, horz_bar4;;
+	sf::Sprite titleSprite8b;
+	sf::Texture titleTexture8b;
+	sf::Font fontScore;
+	sf::Text title_score, score_text, title_controls, controls_text1, controls_text2, controls_text3;
 
 	bool debug;
 	bool **board;

@@ -323,16 +323,10 @@ void Stage_1mil::startNN1mil() {
 	int field_size = width_1mil / board_size_1mil; 
 	sf::RectangleShape field_object(sf::Vector2f(field_size, field_size));
 	field_object.setFillColor(sf::Color(180, 225, 90));
-	//sf::RectangleShape crystal_object(sf::Vector2f(field_size, field_size));
-	//crystal_object.setFillColor(sf::Color(0, 255, 0));
 	texture1.loadFromFile(T_CRYSTAL);
 	crystal_object.setTexture(texture1);
 	sf::RectangleShape head_object(sf::Vector2f(field_size, field_size));
 	head_object.setFillColor(sf::Color(200, 225, 80));
-	//texture2.loadFromFile(T_SNAKE);
-	//head_object.setTexture(texture2);
-	//head_object.setTextureRect(sf::IntRect(0, 0, field_size, field_size));
-	//head_object.setColor(sf::Color(180, 255, 90));
 
 	vert_bar.setSize(sf::Vector2f(6, 600));
 	vert_bar.setFillColor(sf::Color::White);
@@ -340,7 +334,63 @@ void Stage_1mil::startNN1mil() {
 
 	horz_bar.setSize(sf::Vector2f(300, 6));
 	horz_bar.setFillColor(sf::Color::White);
-	horz_bar.setPosition(600, 200);
+	horz_bar.setPosition(600, 100);
+
+	horz_bar2.setSize(sf::Vector2f(300, 6));
+	horz_bar2.setFillColor(sf::Color::White);
+	horz_bar2.setPosition(600, 150);
+
+	horz_bar3.setSize(sf::Vector2f(300, 6));
+	horz_bar3.setFillColor(sf::Color::White);
+	horz_bar3.setPosition(600, 290);
+
+	horz_bar4.setSize(sf::Vector2f(300, 6));
+	horz_bar4.setFillColor(sf::Color::White);
+	horz_bar4.setPosition(600, 340);
+
+	titleTexture6b.loadFromFile(TITLEIMG);
+	titleSprite6b.setTexture(titleTexture6b);
+	titleSprite6b.setPosition(610, 9);
+	titleSprite6b.setScale(0.475, 0.475);
+
+	fontScore.loadFromFile(FONT_SCORE);
+
+	title_score.setString("Snake Metrics");
+	title_score.setFont(fontScore);
+	title_score.setCharacterSize(W_HEIGHT / 38);
+	title_score.setOutlineColor(sf::Color::White);
+	title_score.setPosition(675, 113);
+
+	controls_text3.setString("[Esc] Close");
+	controls_text3.setFont(fontScore);
+	controls_text3.setCharacterSize(W_HEIGHT / 50);
+	controls_text3.setOutlineColor(sf::Color::White);
+	controls_text3.setPosition(620, 470);
+
+	title_controls.setString("Controls");
+	title_controls.setFont(fontScore);
+	title_controls.setCharacterSize(W_HEIGHT / 38);
+	title_controls.setOutlineColor(sf::Color::White);
+	title_controls.setPosition(702, 303);
+
+	controls_text1.setString("[Spacebar] Toggle AI");
+	controls_text1.setFont(fontScore);
+	controls_text1.setCharacterSize(W_HEIGHT / 50);
+	controls_text1.setOutlineColor(sf::Color::White);
+	controls_text1.setPosition(620, 370);
+
+	controls_text2.setString("[ARROW KEYS] Movement");
+	controls_text2.setFont(fontScore);
+	controls_text2.setCharacterSize(W_HEIGHT / 50);
+	controls_text2.setOutlineColor(sf::Color::White);
+	controls_text2.setPosition(620, 420);
+
+	controls_text3.setString("[Esc] Close");
+	controls_text3.setFont(fontScore);
+	controls_text3.setCharacterSize(W_HEIGHT / 50);
+	controls_text3.setOutlineColor(sf::Color::White);
+	controls_text3.setPosition(620, 470);
+
 
 	int speed_block = 0;
 	int speed_block_max = 50;
@@ -358,7 +408,9 @@ void Stage_1mil::startNN1mil() {
 
 	int iteration_time = iteration_time_normal;
 	auto timerBegin = chrono::high_resolution_clock::now();
-	
+	int counter;
+	int counter2 = 0;
+
 	while (window.isOpen()) 	{
 		sf::Event event;
 
@@ -436,9 +488,12 @@ void Stage_1mil::startNN1mil() {
 				think(game, false);
 			else
 				game.iteration();
+				counter2++;
 		}
 
 		window.clear(sf::Color::Black);
+
+		counter = 0;
 
 		for (int x = 0; x < board_size_1mil; x++)
 			for (int y = 0; y < board_size_1mil; y++)
@@ -447,8 +502,26 @@ void Stage_1mil::startNN1mil() {
 				{
 					field_object.setPosition(x * field_size, y * field_size);
 					window.draw(field_object);
+					counter++;
 				}
 			}
+
+		sf::String pscore, iterations, attempts;
+		pscore = "Snake 01 : " + std::to_string(counter);
+		score_text.setString(pscore);
+		score_text.setFont(fontScore);
+		score_text.setCharacterSize(W_HEIGHT / 50);
+		score_text.setOutlineColor(sf::Color::White);
+		score_text.setPosition(620, 175);
+		window.draw(score_text);
+
+		iterations = "Iterations : " + std::to_string(counter2);
+		score_text.setString(iterations);
+		score_text.setFont(fontScore);
+		score_text.setCharacterSize(W_HEIGHT / 50);
+		score_text.setOutlineColor(sf::Color::White);
+		score_text.setPosition(620, 200);
+		window.draw(score_text);
 
 		crystal_object.setPosition(game.crystal.x * field_size, game.crystal.y * field_size);
 		window.draw(crystal_object);
@@ -456,6 +529,15 @@ void Stage_1mil::startNN1mil() {
 		window.draw(head_object);
 		window.draw(vert_bar);
 		window.draw(horz_bar);
+		window.draw(horz_bar2);
+		window.draw(horz_bar3);
+		window.draw(horz_bar4);
+		window.draw(titleSprite6b);
+		window.draw(title_score);
+		window.draw(title_controls);
+		window.draw(controls_text1);
+		window.draw(controls_text2);
+		window.draw(controls_text3);
 		window.display();
 	}
 }

@@ -70,6 +70,11 @@ Gui50::Gui50() {
 	score.setFont(fontScore);
 	score.setCharacterSize(W_HEIGHT / 44);
 	score.setPosition((float)(7 * W_WIDTH / 8.7 - score.getLocalBounds().width / 2), 0);
+
+	titleTexture5b.loadFromFile(TITLEIMG);
+	titleSprite5b.setTexture(titleTexture5b);
+	titleSprite5b.setPosition(W_WIDTH * 0.75, 8);
+	titleSprite5b.setScale(0.62, 0.62);
 }
 
 void Gui50::scroll(Vector2i& mousePos, int val) {
@@ -163,5 +168,6 @@ void Gui50::display(RenderWindow& win, std::vector<sf::Vector2i> fixedO, Snake50
 	win.draw(black_back3);
 	win.draw(horiz_bar_long);
 	win.draw(controls_text);
+	win.draw(titleSprite5b);
 	win.display();
 }

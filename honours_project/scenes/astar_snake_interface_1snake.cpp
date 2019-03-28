@@ -70,6 +70,11 @@ Gui1::Gui1() {
 	score.setFont(fontScore);
 	score.setCharacterSize(W_HEIGHT / 44);
 	score.setPosition((float)(7 * W_WIDTH / 8.7 - score.getLocalBounds().width / 2), 0);
+
+	titleTexture3b.loadFromFile(TITLEIMG);
+	titleSprite3b.setTexture(titleTexture3b);
+	titleSprite3b.setPosition(W_WIDTH * 0.75, 8);
+	titleSprite3b.setScale(0.62, 0.62);
 }
 
 void Gui1::scroll(Vector2i& mousePos, int val) {
@@ -163,5 +168,6 @@ void Gui1::display(RenderWindow& win, std::vector<sf::Vector2i> fixedO, Snake1 s
 	win.draw(black_back3);
 	win.draw(horiz_bar_long);
 	win.draw(controls_text);
+	win.draw(titleSprite3b);
 	win.display();
 }

@@ -51,6 +51,7 @@
 #define FONT_SCORE		"res/fonts/RobotoMono-Regular.ttf"
 #define T_SNAKE			"res/img/snakebody.png"
 #define T_CRYSTAL		"res/img/snakefood.png"
+#define TITLEIMG		"res/img/title.png"
 
 // Tile size on the image.png.
 #define T_SIZE			32

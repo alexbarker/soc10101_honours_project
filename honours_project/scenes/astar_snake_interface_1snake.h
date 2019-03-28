@@ -23,6 +23,8 @@ class Gui1 {
 		sf::Font fontTitle, fontScore;
 		sf::RectangleShape vert_bar, horiz_bar, horiz_bar2, horiz_bar3, horiz_bar_long, black_back, black_back2, black_back3;
 		sf::Text title_score, score, controls_text;
+		sf::Sprite titleSprite3b;
+		sf::Texture titleTexture3b;
 
 	public:
 		Gui1();

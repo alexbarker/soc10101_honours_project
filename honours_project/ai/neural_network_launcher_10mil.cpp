@@ -333,7 +333,62 @@ void Stage_10mil::startNN10mil() {
 
 	horz_bar.setSize(sf::Vector2f(300, 6));
 	horz_bar.setFillColor(sf::Color::White);
-	horz_bar.setPosition(600, 200);
+	horz_bar.setPosition(600, 100);
+
+	horz_bar2.setSize(sf::Vector2f(300, 6));
+	horz_bar2.setFillColor(sf::Color::White);
+	horz_bar2.setPosition(600, 150);
+
+	horz_bar3.setSize(sf::Vector2f(300, 6));
+	horz_bar3.setFillColor(sf::Color::White);
+	horz_bar3.setPosition(600, 290);
+
+	horz_bar4.setSize(sf::Vector2f(300, 6));
+	horz_bar4.setFillColor(sf::Color::White);
+	horz_bar4.setPosition(600, 340);
+
+	fontScore.loadFromFile(FONT_SCORE);
+
+	titleTexture8b.loadFromFile(TITLEIMG);
+	titleSprite8b.setTexture(titleTexture8b);
+	titleSprite8b.setPosition(610, 9);
+	titleSprite8b.setScale(0.475, 0.475);
+
+	title_score.setString("Snake Metrics");
+	title_score.setFont(fontScore);
+	title_score.setCharacterSize(W_HEIGHT / 38);
+	title_score.setOutlineColor(sf::Color::White);
+	title_score.setPosition(675, 113);
+
+	controls_text3.setString("[Esc] Close");
+	controls_text3.setFont(fontScore);
+	controls_text3.setCharacterSize(W_HEIGHT / 50);
+	controls_text3.setOutlineColor(sf::Color::White);
+	controls_text3.setPosition(620, 470);
+
+	title_controls.setString("Controls");
+	title_controls.setFont(fontScore);
+	title_controls.setCharacterSize(W_HEIGHT / 38);
+	title_controls.setOutlineColor(sf::Color::White);
+	title_controls.setPosition(702, 303);
+
+	controls_text1.setString("[Spacebar] Toggle AI");
+	controls_text1.setFont(fontScore);
+	controls_text1.setCharacterSize(W_HEIGHT / 50);
+	controls_text1.setOutlineColor(sf::Color::White);
+	controls_text1.setPosition(620, 370);
+
+	controls_text2.setString("[ARROW KEYS] Movement");
+	controls_text2.setFont(fontScore);
+	controls_text2.setCharacterSize(W_HEIGHT / 50);
+	controls_text2.setOutlineColor(sf::Color::White);
+	controls_text2.setPosition(620, 420);
+
+	controls_text3.setString("[Esc] Close");
+	controls_text3.setFont(fontScore);
+	controls_text3.setCharacterSize(W_HEIGHT / 50);
+	controls_text3.setOutlineColor(sf::Color::White);
+	controls_text3.setPosition(620, 470);
 
 	int speed_block = 0;
 	int speed_block_max = 50;
@@ -351,6 +406,8 @@ void Stage_10mil::startNN10mil() {
 
 	int iteration_time = iteration_time_normal;
 	auto timerBegin = chrono::high_resolution_clock::now();
+	int counter;
+	int counter2 = 0;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -429,23 +486,54 @@ void Stage_10mil::startNN10mil() {
 				think(game, false);
 			else
 				game.iteration();
+				counter2++;
 		}
 
 		window.clear(sf::Color::Black);
+
+		counter = 0;
 
 		for (int x = 0; x < board_size_10mil; x++)
 			for (int y = 0; y < board_size_10mil; y++) {
 				if (game.board[x][y]) {
 					field_object.setPosition(x * field_size, y * field_size);
 					window.draw(field_object);
+					counter++;
 				}
 			}
+
+		sf::String pscore, iterations, attempts;
+		pscore = "Snake 01 : " + std::to_string(counter);
+		score_text.setString(pscore);
+		score_text.setFont(fontScore);
+		score_text.setCharacterSize(W_HEIGHT / 50);
+		score_text.setOutlineColor(sf::Color::White);
+		score_text.setPosition(620, 175);
+		window.draw(score_text);
+
+		iterations = "Iterations : " + std::to_string(counter2);
+		score_text.setString(iterations);
+		score_text.setFont(fontScore);
+		score_text.setCharacterSize(W_HEIGHT / 50);
+		score_text.setOutlineColor(sf::Color::White);
+		score_text.setPosition(620, 200);
+		window.draw(score_text);
+
 		crystal_object.setPosition(game.crystal.x * field_size, game.crystal.y * field_size);
 		window.draw(crystal_object);
 		head_object.setPosition(game.snake.front().x * field_size, game.snake.front().y * field_size);
 		window.draw(head_object);
 		window.draw(vert_bar);
 		window.draw(horz_bar);
+		window.draw(horz_bar2);
+		window.draw(horz_bar3);
+		window.draw(horz_bar4);
+		window.draw(titleSprite8b);
+		window.draw(title_score);
+		window.draw(title_controls);
+		window.draw(controls_text1);
+		window.draw(controls_text2);
+		window.draw(controls_text3);
 		window.display();
 	}
 }
